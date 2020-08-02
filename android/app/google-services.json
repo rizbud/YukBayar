@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1073900025639",
+    "firebase_url": "https://yuk-bayar.firebaseio.com",
+    "project_id": "yuk-bayar",
+    "storage_bucket": "yuk-bayar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073900025639:android:c420973175578cd77adb02",
+        "android_client_info": {
+          "package_name": "com.yukbayar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073900025639-9hi17ur8ubs0os0jse3hb5d1ue52tesd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yukbayar",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1073900025639-n7qd16ckhthdmea5ruj8fvei06t1149s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuiEujoSda1s2JxYq40XpJxongEOnYiTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073900025639-n7qd16ckhthdmea5ruj8fvei06t1149s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

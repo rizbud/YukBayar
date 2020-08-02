@@ -6,29 +6,35 @@ import {
   Text,
   Dimensions,
   Image,
-  StyleSheet
+  StyleSheet,
+  ActivityIndicator
 } from "react-native";
 
 const { width, height } = Dimensions.get('screen')
 
-class Welcome extends Component {
+class Loading extends Component {
+  timeConsuming = async() => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        5000
+      )
+    )
+  }
+
+  async componentDidMount() {
+    const time = await this.timeConsuming()
+    if(time !== null) {
+      this.props.navigation.navigate('Home')
+    }
+  }
+  
   render() {
     return (
       <>
         <StatusBar barStyle="dark-content" />
         <View style={styles.container}>
-          
-          <Image source={require('../images/welcome.jpg')} style={styles.img} />
-          <Text style={styles.caption}>Bayar keperluan kini semakin mudah dengan layanan dari Yuk Bayar.</Text>
-          <View style={styles.account}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')} activeOpacity={0.5} style={styles.login}>
-              <Text style={styles.text}>Login</Text>
-            </TouchableOpacity>
-            <Text style={{color: "#6c6c6c"}}>or</Text>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Register')} activeOpacity={0.5} style={styles.register}>
-              <Text style={styles.text}>Register</Text>
-            </TouchableOpacity>
-          </View>
+          <ActivityIndicator size="large" color="#000" />
         </View>
       </>
     )
@@ -48,7 +54,7 @@ const styles = StyleSheet.create ({
     resizeMode: "stretch"
   },
   caption: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#6c6c6c",
     textAlign: "center",
     marginHorizontal: 50
@@ -81,4 +87,4 @@ const styles = StyleSheet.create ({
   }
 })
 
-export default Welcome;
+export default Loading;
