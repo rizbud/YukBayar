@@ -2,10 +2,7 @@ import React, {Component} from "react";
 import { 
   StatusBar,
   View,
-  TouchableOpacity,
-  Text,
   Dimensions,
-  Image,
   StyleSheet,
   ActivityIndicator
 } from "react-native";
@@ -13,26 +10,16 @@ import {
 const { width, height } = Dimensions.get('screen')
 
 class Loading extends Component {
-  timeConsuming = async() => {
-    return new Promise((resolve) =>
-      setTimeout(
-        () => { resolve('result') },
-        5000
-      )
-    )
-  }
-
-  async componentDidMount() {
-    const time = await this.timeConsuming()
-    if(time !== null) {
+  componentDidMount() {
+    setTimeout(()=> {
       this.props.navigation.navigate('Home')
-    }
+    }, 5000)
   }
   
   render() {
     return (
       <>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <View style={styles.container}>
           <ActivityIndicator size="large" color="#000" />
         </View>

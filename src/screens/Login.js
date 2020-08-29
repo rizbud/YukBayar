@@ -35,9 +35,9 @@ class Login extends Component {
     BackHandler.addEventListener("hardwareBackPress", this.backButton)
   }
 
-  // componentWillUnmount() {
-  //   BackHandler.removeEventListener("hardwareBackPress", this.backButton)
-  // }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.backButton)
+  }
 
   //Email Validator
   validEmail = (text) => {

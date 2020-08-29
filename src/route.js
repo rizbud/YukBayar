@@ -10,6 +10,9 @@ import Login from "./screens/Login";
 import Register from "./screens/Register";
 import Home from "./screens/Home";
 import Loading from "./screens/Loading";
+import Scan from './screens/Scan'
+import TopUp from './screens/TopUp'
+import Kirim from './screens/Kirim'
 
 //Import Firebase
 import auth from '@react-native-firebase/auth'
@@ -26,7 +29,7 @@ class Route extends Component {
     return new Promise((resolve) =>
       setTimeout(
         () => { resolve('result') },
-        5000
+        3000
       )
     )
   }
@@ -59,12 +62,47 @@ class Route extends Component {
               options={{
                 headerShown: false
               }}
-            /> 
+            />
             <Stack.Screen 
               name='Home'
               component={Home}
               options={{
                 headerShown: false
+              }}
+            />
+            <Stack.Screen 
+              name='Scan'
+              component={Scan}
+              options={{
+                headerShown: false
+              }}
+            /> 
+            <Stack.Screen 
+              name='TopUp'
+              component={TopUp}
+              options={{
+                title: 'Top Up',
+                headerStyle: {
+                  backgroundColor: '#4c84ad'
+                },
+                headerTitleStyle: {
+                  fontFamily: 'Montserrat-SemiBold'
+                },
+                headerTintColor: '#fff'
+              }}
+            /> 
+            <Stack.Screen 
+              name='Kirim'
+              component={Kirim}
+              options={{
+                title: 'Kirim Saldo',
+                headerStyle: {
+                  backgroundColor: '#4c84ad'
+                },
+                headerTitleStyle: {
+                  fontFamily: 'Montserrat-SemiBold'
+                },
+                headerTintColor: '#fff'
               }}
             /> 
             </>

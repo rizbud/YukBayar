@@ -49,9 +49,9 @@ class Register extends Component {
     this.setState({date: date+" "+month+" "+year})
   }
 
-  // componentWillUnmount() {
-  //   BackHandler.removeEventListener("hardwareBackPress", this.backButton)
-  // }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.backButton)
+  }
 
   //Email Validator
   validEmail = (text) => {

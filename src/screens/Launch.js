@@ -15,7 +15,7 @@ class Launch extends Component {
   render() {
     return (
       <>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <View style={styles.container}>
           
           <Image source={require('../images/launch.jpg')} style={styles.img} />
