@@ -136,7 +136,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general'
     }
@@ -154,6 +154,14 @@ android {
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+        }
+        release {
+            if (project.hasProperty('YUKBAYAR_RELEASE_STORE_FILE')) {
+                storeFile file(YUKBAYAR_RELEASE_STORE_FILE)
+                storePassword YUKBAYAR_RELEASE_STORE_PASSWORD
+                keyAlias YUKBAYAR_RELEASE_KEY_ALIAS
+                keyPassword YUKBAYAR_RELEASE_KEY_PASSWORD
+            }
         }
     }
     buildTypes {

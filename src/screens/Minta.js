@@ -7,7 +7,7 @@ import Format from '../Lib/formatMoney'
 import firestore from "@react-native-firebase/firestore"
 import auth from "@react-native-firebase/auth"
 
-const Kirim = props => {
+const Minta = props => {
   const { navigation } = props
   const { params } = props.route
 
@@ -15,19 +15,13 @@ const Kirim = props => {
   const [nominal, setNominal] = useState('')
   const [email, setEmail] = useState('')
   const [catatan, setCatatan] = useState('')
-  const [myId, setMyId] = useState(auth().currentUser.uid)
+  const [myId, setMyId] = useState(params.uid)
   const [emailText, setEmailText] = useState('')
   const [emailValid, setEmailValid] = useState(false)
 
   useEffect(() => {
     firestore().collection('users').doc(myId).get()
     .then((res) => setSaldo(res.data().saldo))
-
-    if(params.email != null) {
-      setEmailText(params.email)
-      setEmail(params.email)
-      setEmailValid(true)
-    }
 
     const backButton = () => {
       navigation.goBack()
@@ -46,11 +40,11 @@ const Kirim = props => {
           firestore().collection('users').doc(doc.id).get()
           .then((res) => {
             firestore().collection('users').doc(doc.id).update({
-              saldo: res.data().saldo+nom
+              saldo: res.data().saldo-nom
             })
-            Alert.alert('Sukses', 'Saldo berhasil terkirim', [
+            Alert.alert('Sukses', 'Berhasil meminta saldo', [
               {
-                text: 'Kirim Lagi'
+                text: 'Minta Lagi'
               }, {
                 text: 'Oke',
                 onPress: () => navigation.goBack()
@@ -58,16 +52,16 @@ const Kirim = props => {
             ])
           })
           firestore().collection('transactions').add({
-            type: 'Send',
-            from: myId,
-            to: doc.id,
+            type: 'Ask',
+            from: doc.id,
+            to: myId,
             nominal: nom,
             note: catatan,
             date: new Date()
           })
         })
         firestore().collection('users').doc(myId).update({
-          saldo: saldo-nom
+          saldo: saldo+nom
         })
         .then(() => {
           firestore().collection('users').doc(myId).get()
@@ -78,9 +72,7 @@ const Kirim = props => {
     } else if(!emailValid) {
       alert('Email tidak valid')
     } else if(nom < 10000) {
-      alert('Minimal kirim Rp10.000')
-    } else if(nom > saldo) {
-      alert('Saldo tidak mencukupi')
+      alert('Minimal minta Rp10.000')
     }
   }
 
@@ -111,7 +103,7 @@ const Kirim = props => {
       </View>
       <View style={styles.sectionB}>
         <View style={styles.inputStyle}>
-          <Text style={styles.inputLabel}>E-mail penerima</Text>
+          <Text style={styles.inputLabel}>E-mail pengirim</Text>
           <View style={styles.input}>
             <TextInput
               style={styles.inputNominal}
@@ -140,7 +132,7 @@ const Kirim = props => {
             underlineColorAndroid="transparent"
           />
         </View>
-        <Text style={styles.warning}>{nominal < 10000 && nominal != 0 ? 'Minimal Kirim Rp10.000' : ''}{nominal > saldo ? 'Saldo tidak cukup' : ''}</Text>
+        <Text style={styles.warning}>{nominal < 10000 && nominal != 0 ? 'Minimal Minta Rp10.000' : ''}</Text>
         <View style={styles.inputStyle}>
           <Text style={styles.inputLabel}>Catatan</Text>
           <View style={styles.input}>
@@ -162,7 +154,7 @@ const Kirim = props => {
         style={styles.btnTopUp}
         activeOpacity={0.8}
       >
-        <Text style={styles.btnTopUpLabel}>Kirim Saldo</Text>
+        <Text style={styles.btnTopUpLabel}>Minta Saldo</Text>
       </TouchableOpacity>
     </ScrollView>
   )
@@ -240,4 +232,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Kirim
+export default Minta

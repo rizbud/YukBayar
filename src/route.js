@@ -13,6 +13,7 @@ import Loading from "./screens/Loading";
 import Scan from './screens/Scan'
 import TopUp from './screens/TopUp'
 import Kirim from './screens/Kirim'
+import Minta from './screens/Minta'
 
 //Import Firebase
 import auth from '@react-native-firebase/auth'
@@ -96,6 +97,20 @@ class Route extends Component {
               component={Kirim}
               options={{
                 title: 'Kirim Saldo',
+                headerStyle: {
+                  backgroundColor: '#4c84ad'
+                },
+                headerTitleStyle: {
+                  fontFamily: 'Montserrat-SemiBold'
+                },
+                headerTintColor: '#fff'
+              }}
+            /> 
+            <Stack.Screen 
+              name='Minta'
+              component={Minta}
+              options={{
+                title: 'Minta Saldo',
                 headerStyle: {
                   backgroundColor: '#4c84ad'
                 },

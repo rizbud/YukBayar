@@ -70,7 +70,6 @@ class Home extends Component {
   getJam() {
     const date = new Date()
     const jam = date.getHours()
-    const menit = date.getMinutes()
 
     if(jam<=3) {
       this.setState({salam: 'Selamat Malam,'})
@@ -134,7 +133,7 @@ class Home extends Component {
             <BtnMenu icon="qrcode" iconSize={30} iconColor="#fff" style={styles.btnMenuHeader} textStyle={styles.btnMenuHeaderLabel} text="Scan" onPress={() => navigate('Scan')} />
             <BtnMenu icon="plus-circle" iconSize={30} iconColor="#fff" style={styles.btnMenuHeader} textStyle={styles.btnMenuHeaderLabel} text="Top Up" onPress={() => navigate('TopUp', {uid: this.state.uid})} />
             <BtnMenu icon="arrow-circle-up" iconSize={30}  iconColor="#fff" style={styles.btnMenuHeader} textStyle={styles.btnMenuHeaderLabel} text="Kirim" onPress={() => navigate('Kirim', {uid: this.state.uid})} />
-            <BtnMenu icon="arrow-circle-down" iconSize={30} iconColor="#fff" style={styles.btnMenuHeader} textStyle={styles.btnMenuHeaderLabel} text="Minta" onPress={() => alert('')} />
+            <BtnMenu icon="arrow-circle-down" iconSize={30} iconColor="#fff" style={styles.btnMenuHeader} textStyle={styles.btnMenuHeaderLabel} text="Minta" onPress={() => navigate('Minta', {uid: this.state.uid})} />
           </View>
           <View style={styles.purchaseMenu}>
             <View style={styles.purchaseMenu1}>

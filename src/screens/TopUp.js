@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StatusBar, TouchableOpacity, Text, TextInput, StyleSheet, BackHandler } from 'react-native'
+import { View, StatusBar, TouchableOpacity, Text, TextInput, StyleSheet, BackHandler, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Format from '../Lib/formatMoney'
@@ -25,13 +25,31 @@ const TopUp = props => {
     return () => backHandler.remove()
   }, [])
 
-  const onTopUp = async () => {
+  const onTopUp = () => {
     const nom = Number(nominal)
-    await firestore().collection('users').doc(params.uid).update({
+    firestore().collection('users').doc(params.uid).update({
       saldo: saldo+nom
     })
-    firestore().collection('users').doc(params.uid).get()
-    .then((res) => setSaldo(res.data().saldo))
+    .then(() => {
+      firestore().collection('users').doc(params.uid).get()
+      .then((res) => setSaldo(res.data().saldo))
+    })
+    firestore().collection('transactions').add({
+      type: 'Top Up',
+      from: 'System',
+      to: params.uid,
+      nominal: nom,
+      note: '',
+      date: new Date()
+    })
+    Alert.alert('Sukses', 'Berhasil Top Up saldo', [
+      {
+        text: 'Kirim Lagi'
+      }, {
+        text: 'Oke',
+        onPress: () => navigation.goBack()
+      }
+    ])
   }
 
   return (
