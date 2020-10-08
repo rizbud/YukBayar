@@ -19,7 +19,7 @@ import firestore from "@react-native-firebase/firestore"
 import BtnMenu from '../components/BtnMenu'
 import Loading from './Loading'
 
-import Format from '../Lib/formatMoney'
+import Format from '../lib/formatMoney'
 
 class Home extends Component {
   constructor(props){
