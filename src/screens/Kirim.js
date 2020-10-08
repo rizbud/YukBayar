@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, ScrollView, TouchableOpacity, Text, TextInput, StyleSheet, BackHandler, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-import Format from '../Lib/formatMoney'
+import Format from '../lib/formatMoney'
 
 import firestore from "@react-native-firebase/firestore"
 import auth from "@react-native-firebase/auth"
