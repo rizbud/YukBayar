@@ -20,6 +20,7 @@ import BtnMenu from '../components/BtnMenu'
 import Loading from './Loading'
 
 import Format from '../lib/formatMoney'
+import styles from './styles/homeStyle'
 
 class Home extends Component {
   constructor(props){
@@ -167,109 +168,5 @@ class Home extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff"
-  },
-  container: {
-    backgroundColor: "#e0e0e0",
-    flex: 1
-  },
-  header: {
-    backgroundColor: "#4c84ad",
-    flexDirection: 'row',
-    padding: 10
-  },
-  left: {
-    flex: 1
-  },
-  salam: {
-    fontSize: 18,
-    color: "#fff",
-    fontFamily: "Montserrat-SemiBold"
-  },
-  nama: {
-    fontSize: 14,
-    color: "#fff",
-    fontFamily: "Montserrat"
-  },
-  right: {
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end'
-  },
-  saldoSaya: {
-    flexDirection: 'row'
-  },
-  rp: {
-    fontSize: 14,
-    fontFamily: "Montserrat",
-    color: "#fff"
-  },
-  nominal: {
-    fontFamily: "Montserrat-SemiBold",
-    fontSize: 20,
-    color: "#fff"
-  },
-  headerMenu: {
-    flexDirection: 'row',
-    backgroundColor: '#4c84ad',
-    padding: 5,
-    paddingVertical: 10
-  },
-  btnMenuHeader: {
-    flex: 1,
-    marginHorizontal: 5,
-    padding: 5,
-    alignItems: 'center',
-  },
-  btnMenuHeaderLabel: {
-    color: '#fff',
-    fontFamily: 'Montserrat-SemiBold',
-    marginTop: 5
-  },
-  purchaseMenu: {
-    backgroundColor: '#fff',
-    marginHorizontal: 10,
-    borderRadius: 8,
-    padding: 5,
-    paddingVertical: 10,
-    marginVertical: 20
-  },
-  purchaseMenu1: {
-    flexDirection: 'row',
-    marginBottom: 20
-  },
-  purchaseMenu2: {
-    flexDirection: 'row'
-  },
-  btnPurchaseMenu: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  btnPurchaseMenuLabel: {
-    color: '#000',
-    fontFamily: 'Montserrat',
-    textAlign: 'center',
-    marginTop: 5,
-    justifyContent: 'center'
-  },
-  promo: {
-    marginHorizontal: 10
-  },
-  promoText: {
-    fontFamily: 'Montserrat-SemiBold',
-    marginBottom: 5
-  },
-  promoImg: {
-    width: 250,
-    height: 150,
-    borderRadius: 10,
-    margin: 5
-  }
-})
 
 export default Home
